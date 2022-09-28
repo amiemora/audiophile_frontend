@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.container {
+  background-color: black;
+  width:100%;
+}
+
+/* SIGNIN */
+.div-signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title-signin {
+  color: white;
+}
+.h1-signin {
+  color: white;
+}
+.submit {
+  margin-top: 1em;
+}
+
+/* NAVBAR */
+.ham{
+  color: white;
+  background-color: white;
+}
+.title {
+  color: white;
+}
+.audio {
+  color: white;
+}
+.navbar {
+  background-color: black;
+}
+.nav-item{
+  text-decoration: none;
+  margin-left: 1em;
+  
+}
+
+
+
+/* ABOUT */
+.about-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2em;
+}
+.h1-about {
+  text-align: center;
+  color: white;
+  margin-bottom: 1em;
+}
+
+
+
+/* FEED */
+.post-div {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-image: url("https://wallpaper.dog/large/20351168.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.post-card {
+  margin: 2em;
+}
+.go-listen{
+  margin-left: 1em;
+}
+.music-icon:hover {
+  cursor: pointer;
+}
+
+
+/* PROFILE */
+.profile-container {
+  background-image: url("https://w0.peakpx.com/wallpaper/5/938/HD-wallpaper-purple-neon-waves-creative-abstract-art-neon-lines-neon-waves.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.prof-header {
+  display: flex;
+  color: white;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+.post-h4{
+  color: white;
+}
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.prof-post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

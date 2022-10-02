@@ -57,9 +57,9 @@ export default function Spotify() {
  
  const renderArtists = () => {
    return artists.map(artist => (
-       <div key={artist.id} onClick={()=> handleOnClick(artist.href)}>
-           {artist.album.images.length ? <img width={"25%"} src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
-           {artist.name}
+       <div className="after-search" key={artist.id} onClick={()=> handleOnClick(artist.href)}>
+           {artist.album.images.length ? <img className='album-img' src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
+           <h3 className='song-title'> Title: {artist.name}</h3>
        </div>
    ))
  }
@@ -118,17 +118,18 @@ export default function Spotify() {
  
 
     return (
-      <div className="container">
+      <div className="container-spotify">
+        <h1 className='h1-signin'>Start sharing music by logging into spotify!</h1>
       {!token ?
-      <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
+      <a  className='h1-signin' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
                         to Spotify</a>
-                    : <button onClick={logout}>Logout</button>}
+                    : <a className='signup-link' onClick={logout}>Logout of Spotify</a>}
             <form onSubmit={searchArtists}>
-          <input type="text" onChange={e => setSearchKey(e.target.value)}/>
-          <button type={"submit"}>Search</button>
-          <h1>{renderArtists()}</h1>
+          <input className='input-signin' type="text" placeholder='Search a Song Title' onChange={e => setSearchKey(e.target.value)}/>
+          <button className='sign-in-btn-search' type={"submit"}>Search</button>
       </form>
-        
+      <h1 className='post-directions' >Click on an album cover to start a post!</h1>
+      {renderArtists()}
   </div>
     )
 }

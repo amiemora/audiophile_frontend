@@ -70,8 +70,13 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
   
 }
 
-
-
+/* REGISTER */
+.register-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

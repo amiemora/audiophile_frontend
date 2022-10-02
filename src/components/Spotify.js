@@ -64,7 +64,7 @@ export default function Spotify() {
    ))
  }
  
- 
+ const [post, setPost] = ([])
  const [songTitle, setSongTitle] = ('')
  const [albumName, setAlbumName] = ('')
  const [artistName, setArtistName] = ('')
@@ -111,7 +111,9 @@ export default function Spotify() {
    console.log("song title:", dataAlbum.data.name, "  ",
    "album name:", dataAlbum.data.album.name, "  ",
    "artist name:",  dataAlbum.data.artists[0].name)
- 
+    setSongTitle(dataAlbum.data.name)
+    setAlbumName(dataAlbum.data.album.name)
+    setArtistName(dataAlbum.data.artists[0].name)
  }
  
  

@@ -122,9 +122,6 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
   padding: 6px;
   border-radius: 20px;
 }
-.logout-btn:hover {
-  background-color: rgba(245,46,255,0.84);
-}
 .container-spotify {
   display: flex;
   flex-direction: column;
@@ -150,7 +147,9 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
   width: 300px;
 }
 .album-img:hover{
-  border: solid 1px white;
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+  -moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 }
 /* ABOUT */
 .about-div {

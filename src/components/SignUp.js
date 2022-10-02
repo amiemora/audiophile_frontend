@@ -33,8 +33,8 @@ export default function SignUp({setUsers, setPermission}) {
         }
         axios.post(`http://localhost:5250/api/Auth/register`, data).then((result)=> 
             {
-                const dt = result.data
-                alert(dt.statusMessage)
+               
+                alert("You have successfully registered. Login to access your account.")
             })
             .catch((error)=> {
                 console.log(error)
@@ -54,12 +54,14 @@ export default function SignUp({setUsers, setPermission}) {
     // }
 
     return (
-        <div>
+        <div className='register-div'>
+                <h1 className='title-signin'>AUDIOPHILE <i className="fa-solid fa-record-vinyl audio"></i> </h1>
+                <h1 className='h1-signin'>Register</h1>
             <form onSubmit={(e) => {e.preventDefault(); handleRegister(username,name,password)}}>
-                <input name='username' type='text' placeholder='username required' onChange={handleUsername} />
-                <input name='name' type='text' placeholder='name required' onChange={handleName} />
-                <input name='password' type='text' placeholder='required' onChange={handlePassword}/>
-                <input type='submit' value='Register'/>
+                <input className='input-signin' name='username' type='text' placeholder='username required' onChange={handleUsername} />
+                <input  className='input-signin' name='name' type='text' placeholder='name required' onChange={handleName} />
+                <input className='input-signin' name='password' type='text' placeholder='password required' onChange={handlePassword}/>
+                <input className='sign-in-btn' type='submit' value='Register'/>
             </form>
             <div>
                 <h5>

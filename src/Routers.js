@@ -8,6 +8,7 @@ import NavMenu from "./components/NavMenu"
 import Spotify from "./components/Spotify"
 import Profile from "./components/ProfilePage"
 import About from "./components/About"
+import Feed from "./components/Feed"
 
 const ProtectedRoute = ({ permission, children }) => {
 	if (!permission) {
@@ -39,6 +40,7 @@ export default function Routers() {
             <Main setUsers={setUsers} setPost={setPost} setComment={setComment} users={users} post={post} user={user} comments={comments}/> 
             </ProtectedRoute> } />
             <Route path="/about" element={< About />} />
+            <Route path='/feed' element={< Feed />} />
             <Route path="/profile" element={< Profile />} />
             <Route path="/spotify" element={<Spotify user={user} setComment={setComment}/>}/>
         </Routes>

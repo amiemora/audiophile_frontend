@@ -18,16 +18,64 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .title-signin {
+  margin-top: 2em;
   color: white;
+  font-size: 3em;
 }
 .h1-signin {
+  text-align: center;
   color: white;
+  margin-top: 1em;
+  font-size: 1.5em;
 }
 .submit {
   margin-top: 1em;
 }
+.signin-form {
+  align-items: center;
+}
+.input-signin {
+  padding: 15px;
+  border-radius: 99px;
+  margin-top: 1em;
+  display: block;
+  text-align: center;
+}
+.sign-in-btn {
+  width: 220px;
+  margin-top: 2em;
+  padding: 7px;
+  border-radius: 20px;
+  color:black;
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+-moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+}
+.sign-in-btn:hover {
+  color: black;
+  padding: 10px;
+}
+.signup-link {
+  margin-top: 1.5em;
+  color: white;
+  
+}
+
+
+
+
+
+
+
 
 /* NAVBAR */
 .ham{

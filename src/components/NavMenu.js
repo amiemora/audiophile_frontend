@@ -1,11 +1,12 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useLocation } from 'react-router-dom'
 import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
 
 
 export default function NavMenu() {
+  const location = useLocation();
 
-
+  if (location.pathname !== "/login" && location.pathname !== "/signup") {
     return (
         <Navbar bg="black" expand="lg" className='navbar'>
         <Container>
@@ -20,22 +21,24 @@ export default function NavMenu() {
             <NavLink className="d-inline p-2 text-white nav-item" to="/about">
             About
             </NavLink>
-            <NavLink className="d-inline p-2 text-white nav-item" to="/">
+            <NavLink className="d-inline p-2 text-white nav-item" to="/feed">
             Feed
             </NavLink>
             <NavLink className="d-inline p-2 text-white nav-item" to="/profile">
             Profile
             </NavLink>
             <NavLink className="d-inline p-2 text-white nav-item" to="/spotify">
-            Spotify
+            Post
             </NavLink> 
-            <NavLink className="d-inline p-2 text-white nav-item" to="/signin">
-            SignIn
-            </NavLink>
+            <NavLink className="d-inline p-2 text-white nav-item" to="/login">
+              Logout
+            </NavLink> 
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    )
+    ) } else {
+      return; 
+    }
 }
 

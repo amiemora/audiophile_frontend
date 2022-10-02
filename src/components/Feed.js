@@ -1,67 +1,128 @@
+import axios from 'axios'
 import React from 'react'
-import {Card, ListGroup} from 'react-bootstrap'
-import $ from 'jquery';
-export default function Feed() {
+import {Card, ListGroup, ListGroupItem} from 'react-bootstrap'
+import Comment from './Comment'
+export default function Feed({post, API, users, comments, setPost, username, setComment}) {
 
+    const DeleteButton = ({user, postItem}) => {
+        if (username.username === user.username) {
+            return (
+                <>
+                <button onClick={()=> {deletePost(postItem)}} value={postItem.PostId}>
+                   {" "} Delete Post
+                </button>
+                </>
+            )
+        } else {
+            return <></>
+        }
+    }
 
+    const deletePost = (deletedPost) => {
+        axios.delete(`${API}/post/` + deletedPost.PostId).then((response) => {
+            setPost(post.filter((post) => post.id !== deletedPost.PostId))
+        })
+    }
+
+    const handleDelete = (deletedComment) => {
+        axios.delete(`${API}/comments/` + deletedComment.CommentId).then((response) => {
+            setComment(comments.filter((comments) => comments.CommentId !== deletedComment.CommentId))
+        })
+    }
+
+    const DeleteComment = ({comment, user}) => {
+        if (comment.UserId === user.UserId) {
+            return (
+                <>
+                    <button onClick={()=> {handleDelete(comment)}} value={comment.CommentId}>
+                        Delete 
+                    </button>
+                </>
+            )
+        } else {
+            return <></>
+        }
+    }
 
 
     return (
-    <div className='post-div'>
-            <Card style={{ width: '18rem' }} className="post-card">
-        <ListGroup variant="flush">
-            <ListGroup.Item>username just shared a tune!</ListGroup.Item>
-            <ListGroup.Item>song: </ListGroup.Item>
-            <ListGroup.Item>artist: </ListGroup.Item>
-            <ListGroup.Item>Go Listen: 
-                <a href='https://open.spotify.com/' className='music-icon'>
-                <i className="fa-brands fa-spotify go-listen"></i>
-                </a>
-                <a href='https://soundcloud.com/' className='music-icon'>
-                <i className="fa-brands fa-soundcloud go-listen"></i> 
-                </a>
-                <a href='https://music.apple.com/us/listen-now?ign-itscg=20200&ign-itsct=rv_eve&mttnagencyid=b2r&mttncc=US&mttnpid=Google%20AdWords&mttnsiteid=125115&mttnsubad=mus-117459023029&mttnsubkw=ag-117459023029-ad-519622742781'  className='music-icon'>
-                <i className="fa-solid fa-music go-listen"></i>  
-                </a>
-            </ListGroup.Item>
-            <ListGroup.Item>album: </ListGroup.Item>
-            <ListGroup.Item>genre: </ListGroup.Item>
-            <ListGroup.Item>posted at: </ListGroup.Item>
-            <ListGroup.Item>Likes: </ListGroup.Item>
-            <ListGroup.Item>Comment: </ListGroup.Item>
-        </ListGroup>
-        </Card>
-
-        <Card style={{ width: '18rem' }} className="post-card">
-        <ListGroup variant="flush">
-            <ListGroup.Item>username just shared a tune!</ListGroup.Item>
-            <ListGroup.Item>song: </ListGroup.Item>
-            <ListGroup.Item>artist: </ListGroup.Item>
-            <ListGroup.Item>Go Listen: <i class="fa-brands fa-spotify"></i>
-            <i class="fa-brands fa-soundcloud"></i><i class="fa-solid fa-music"></i></ListGroup.Item>
-            <ListGroup.Item>album: </ListGroup.Item>
-            <ListGroup.Item>genre: </ListGroup.Item>
-            <ListGroup.Item>posted at: </ListGroup.Item>
-            <ListGroup.Item>Likes: </ListGroup.Item>
-            <ListGroup.Item>Comment: </ListGroup.Item>
-        </ListGroup>
-        </Card>
-
-        <Card style={{ width: '18rem' }} className="post-card">
-        <ListGroup variant="flush">
-            <ListGroup.Item>username just shared a tune!</ListGroup.Item>
-            <ListGroup.Item>song: </ListGroup.Item>
-            <ListGroup.Item>artist: </ListGroup.Item>
-            <ListGroup.Item>Go Listen: <i class="fa-brands fa-spotify"></i>
-            <i class="fa-brands fa-soundcloud"></i><i class="fa-solid fa-music"></i></ListGroup.Item>
-            <ListGroup.Item>album: </ListGroup.Item>
-            <ListGroup.Item>genre: </ListGroup.Item>
-            <ListGroup.Item>posted at: </ListGroup.Item>
-            <ListGroup.Item>Likes: </ListGroup.Item>
-            <ListGroup.Item>Comment: </ListGroup.Item>
-        </ListGroup>
-        </Card>
-    </div>
+        <div className='container-feed'>
+			<div className='grid-div'>
+				{post.map((postItem) => {
+					const idPost = postItem.PostId;
+					//user
+					const idUser = postItem.UserId;
+					let user = users.filter((user) => {
+						if (user.UserId === idUser) {
+							return true;
+						} else {
+							return false;
+						}
+					});
+					user = user[0];
+					const allPostComments = comments.filter((comment) => {
+						if (comment.PostId === idPost) {
+							return true;
+						} else {
+							return false;
+						}
+					});
+					return (
+						<div className='feed-div'>
+							<DeleteButton user={user} postItem={postItem} />
+							<p className='user-p'>
+								{user.Username}
+							</p>
+							<div className='border-one'>
+								<div className='border-two'>
+									<h4 className='title'>
+										Song: {postItem.SongTitle}
+									</h4>
+									<h4 className='title'>
+                                        Artist: {postItem.Artist}
+                                    </h4>
+                                    <h4 className='title'>
+                                        Album: {postItem.Album}
+                                    </h4>
+								</div>
+							</div>
+							<p> {postItem.Likes}</p>
+							{allPostComments.length ? (
+								<div>
+									{allPostComments.map((comment) => {
+										console.log(comment.UserId);
+										const idUser = comment.UserId;
+										let commenter = users.filter((user) => {
+											if (user.UserId === idUser) {
+												return true;
+											} else {
+												return false;
+											}
+										});
+										console.log(commenter);
+										return (
+											<p>
+												{commenter[0].Username}
+												<br />
+												{comment.CommentBody}
+												<DeleteComment comment={comment} user={user} />
+											</p>
+										);
+									})}
+								</div>
+							) : (
+								<div>No comments currently...</div>
+							)}
+							<Comment
+								API={API}
+								user={user}
+								post={postItem}
+								comments={comments}
+							/>
+						</div>
+					);
+				})}
+			</div>
+		</div>
     )
 }
-

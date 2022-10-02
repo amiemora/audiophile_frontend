@@ -12,35 +12,53 @@ export default function Profile() {
        <h4 className='post-h4'>Posts:</h4>
        <div className='prof-post'>
            
-            <Card style={{ width: '18rem' }} className="post-card">
-            <ListGroup variant="flush">
-                <ListGroup.Item>username just shared a tune!</ListGroup.Item>
-                <ListGroup.Item>song: </ListGroup.Item>
-                <ListGroup.Item>artist: </ListGroup.Item>
-                <ListGroup.Item>Go Listen: <i class="fa-brands fa-spotify"></i>
-                <i class="fa-brands fa-soundcloud"></i><i class="fa-solid fa-music"></i></ListGroup.Item>
-                <ListGroup.Item>album: </ListGroup.Item>
-                <ListGroup.Item>genre: </ListGroup.Item>
-                <ListGroup.Item>posted at: </ListGroup.Item>
-                <ListGroup.Item>Likes: </ListGroup.Item>
-                <ListGroup.Item>Comment: </ListGroup.Item>
-            </ListGroup>
-            </Card>
+       <div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
 
-            <Card style={{ width: '18rem' }} className="post-card">
-            <ListGroup variant="flush">
-                <ListGroup.Item>username just shared a tune!</ListGroup.Item>
-                <ListGroup.Item>song: </ListGroup.Item>
-                <ListGroup.Item>artist: </ListGroup.Item>
-                <ListGroup.Item>Go Listen: <i class="fa-brands fa-spotify"></i>
-                <i class="fa-brands fa-soundcloud"></i><i class="fa-solid fa-music"></i></ListGroup.Item>
-                <ListGroup.Item>album: </ListGroup.Item>
-                <ListGroup.Item>genre: </ListGroup.Item>
-                <ListGroup.Item>posted at: </ListGroup.Item>
-                <ListGroup.Item>Likes: </ListGroup.Item>
-                <ListGroup.Item>Comment: </ListGroup.Item>
-            </ListGroup>
-            </Card>
+        <div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
+
+        <div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
             
        </div>
         

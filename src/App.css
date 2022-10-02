@@ -12,6 +12,10 @@
   width:100%;
 }
 
+.h1-test {
+  color: white;
+}
+
 /* SIGNIN */
 .div-signin {
   display: flex;
@@ -30,12 +34,16 @@
   margin-top: 2em;
   color: white;
   font-size: 3em;
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
 }
 .h1-signin {
   text-align: center;
   color: white;
   margin-top: 1em;
   font-size: 1.5em;
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
 }
 .submit {
   margin-top: 1em;
@@ -56,13 +64,14 @@
   padding: 7px;
   border-radius: 20px;
   color:black;
-  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
--moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
 }
 .sign-in-btn:hover {
   color: black;
-  padding: 10px;
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+  -moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 }
 .signup-link {
   margin-top: 1.5em;
@@ -168,7 +177,7 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 
 
 /* FEED */
-.post-div {
+.div-feed-container {
   margin-top: 3em;
   display: flex;
   justify-content: center;
@@ -186,7 +195,78 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 .music-icon:hover {
   cursor: pointer;
 }
-
+.post-img-feed {
+  width: 100px;
+}
+.audio-icon {
+  color: white;
+}
+.like {
+  color: white;
+}
+.comment {
+  color: white;
+}
+.feeds {
+  border: solid 1px red;
+  display: flex;
+}
+.feed .head {
+  display: flex;
+}
+.u-feed {
+  text-align: center;
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
+}
+.card-feed {
+  margin-right: 1.5em;
+  background-color: #111;
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 13rem;
+  border-radius: 1em;
+  padding: 1rem;
+  align-items: center;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.card-feed:hover {
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+  -moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+}
+.circle {
+  margin-top: .8em;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: rgb(50,233,50);
+  display: grid;
+  place-items: center;
+  transform: scale(0.95);
+}
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 18px solid black;
+  transform: rotate(90deg);
+}
+.play-icon:hover .circle {
+  cursor: pointer;
+  transform: scale(1);
+}
+.post-text {
+  text-align: center;
+  margin-top: .8em;
+  font-family: 'Saira', sans-serif;
+  font-weight: bold;
+}
 
 /* PROFILE */
 .profile-container {

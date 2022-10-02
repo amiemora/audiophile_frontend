@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useEffect, useState} from 'react'
 import React from 'react'
 import Routers from './Routers'
+import NavMenu from './components/NavMenu'
 
 function App() {
 

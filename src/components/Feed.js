@@ -5,7 +5,7 @@ import Comment from './Comment'
 import {useEffect, useState} from 'react'
 import { data } from 'jquery'
 
-export default function Feed({setPost, username, setComment, setUser, setUsers, comments, users, post, user}) {
+export default function Feed({setPost, setComment, setUser, setUsers, comments, users, post, user}) {
 
 	const [fetchUser, setFetchUser] = useState([])
 
@@ -19,7 +19,7 @@ export default function Feed({setPost, username, setComment, setUser, setUsers, 
     }, [])
 
 	console.log(fetchUser)
-	
+	console.log()
 
 	return (
 <div>
@@ -45,7 +45,7 @@ export default function Feed({setPost, username, setComment, setUser, setUsers, 
 	</div>
 
 	<div className='users-map'>
-		<p className='h1-test' >Users: </p>
+		<p className='h1-test' >Users:  &nbsp; </p>
 	{fetchUser.map((userItem)=> {
 			return (
 			<p className='h1-test'>{userItem.username} &nbsp; </p>

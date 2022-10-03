@@ -60,7 +60,16 @@ export default function Spotify() {
        <div className="after-search" key={artist.id} onClick={()=> handleOnClick(artist.href)}>
            {artist.album.images.length ? <img className='album-img' src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
            <h3 className='song-title'> Title: {artist.name}</h3>
+           <div>
+            <form onSubmit={(e)=> {e.preventDefault(); handleSubmit(songTitle, albumName, artistName)}}>
+              <input value={tracks.selectedTrack} onChange={handleSongTitle} />
+              <input value={tracks.artist} onChange={handleArtist} />
+              <input value={tracks.listOfTracksFromAPI} onChange={handleAlbum} />
+              <input type='submit' value='Post' />
+            </form>
+        </div>
        </div>
+    
    ))
  }
  
@@ -69,38 +78,28 @@ export default function Spotify() {
  const [albumName, setAlbumName] = ('')
  const [artistName, setArtistName] = ('')
  
- const handleTitle = (e) => {
-   setSongTitle()
- }
+const handleSongTitle = (e) => {
+  setSongTitle(e.target.value)
+}
 
- const handleAlbum = (e) => {
-   setAlbumName()
- }
+const handleAlbum = (e) => {
+  setAlbumName(e.target.value)
+}
 
- const handleArtist = (e) => {
-   setArtistName()
- }
+const handleArtist = (e) => {
+  setArtistName(e.target.value)
+}
+const handleSubmit = (songTitle, albumName, artistName) => {
+ 
+  axios.post('http://localhost:3000/spotify',
+    songTitle,
+    albumName,
+    artistName
+  )
+}
 
-//  const newPost = () => {
-//    let obj = {
-//       UserId: userEvent.UserId,
-//       SongTitle: songTitle,
-//       Album: albumName,
-//       Artist: artistName
-//    }
-//    console.log(obj)
-//    axios.post(`${API}/post`, obj).then((response) => {
-//       navigate('/feed')
-//    })
-//  }
 
-//  const deletePost = (deletedPost) => {
-//    axios.delete(`${API}/post/` + deletePost.id)
-//    .then((response) => {
-//       setPost(post.filter(post=> post.id !== deletePost.id) )
-//    })
-//  }
-
+ const [tracks, setTracks] = useState({selectedTrack: '', listOfTracksFromAPI: '', artist: ''});
 
  const handleOnClick = async (id) => {
    const dataAlbum = await axios.get(`${id}`, {
@@ -111,12 +110,40 @@ export default function Spotify() {
    console.log("song title:", dataAlbum.data.name, "  ",
    "album name:", dataAlbum.data.album.name, "  ",
    "artist name:",  dataAlbum.data.artists[0].name)
-    setSongTitle(dataAlbum.data.name)
-    setAlbumName(dataAlbum.data.album.name)
-    setArtistName(dataAlbum.data.artists[0].name)
+   setTracks({
+    selectedTrack: dataAlbum.data.name,
+    listOfTracksFromAPI: dataAlbum.data.album.name,
+    artist: dataAlbum.data.artists[0].name
+  })
+  return (
+    <div>
+      <h2>{tracks}</h2>
+    </div>
+  )
  }
+
+
+
+ console.log(tracks)
+
  
- 
+
+//  setSongTitle(dataAlbum.data.name)
+//  setAlbumName(dataAlbum.data.album.name)
+//  setArtistName(dataAlbum.data.artists[0].name)
+
+// const postSearch = async (id) => {
+  
+//   const {data} = await axios.get(`https://api.spotify.com/v1/search/track/${id}`, {
+//       headers: {
+//           Authorization: `Bearer ${token}`
+//       }
+//   })
+//   //4yvcSjfu4PC0CYQyLy4wSq
+//   console.log(data)
+  
+//   setPost(data.tracks.items)
+// }
  
 
     return (
@@ -132,6 +159,9 @@ export default function Spotify() {
       </form>
       <h1 className='post-directions' >Click on an album cover to start a post!</h1>
       {renderArtists()}
+      <div>
+        
+      </div>
   </div>
     )
 }

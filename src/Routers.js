@@ -24,7 +24,8 @@ export default function Routers() {
 	const [post, setPost] = useState([])
 	const [comments, setComment] = useState([])
 	const [permission, setPermission] = useState(false)
-	//const API = ''
+	
+ 
 
 
 
@@ -41,7 +42,7 @@ export default function Routers() {
             </ProtectedRoute> } />
             <Route path="/about" element={< About />} />
             <Route path='/feed' element={< Feed />} />
-            <Route path="/profile" element={< Profile />} />
+            <Route path="/profile" element={< Profile user={user} />} />
             <Route path="/spotify" element={<Spotify user={user} setComment={setComment}/>}/>
         </Routes>
         </BrowserRouter>

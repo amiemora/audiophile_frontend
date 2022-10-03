@@ -24,9 +24,7 @@ export default function NavMenu() {
             <NavLink className="d-inline p-2 text-white nav-item" to="/feed">
             Feed
             </NavLink>
-            <NavLink className="d-inline p-2 text-white nav-item" to="/profile">
-            Profile
-            </NavLink>
+          
             <NavLink className="d-inline p-2 text-white nav-item" to="/spotify">
             Post
             </NavLink> 

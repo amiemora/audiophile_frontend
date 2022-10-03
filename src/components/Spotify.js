@@ -68,11 +68,7 @@ export default function Spotify(fetchUser={fetchUser}, user={user}) {
               <input className='post-btn' type='submit' value='Post' />
             </form>
         </div>
-        <div className='text'>
-				<p className='h1-test post-text'>Title: &nbsp; {tracks.songTitle}</p>
-				<p className='h1-test post-text'>Artist: &nbsp; {tracks.artistName}</p>
-				<p className='h1-test post-text'>Album: &nbsp; {tracks.albumName}</p>
-			</div>
+      
        </div>
     
    ))
@@ -118,8 +114,8 @@ const handleSubmit = () => {
   }
   axios.post('http://localhost:5250/api/post', data).then((response) =>
   console.log(response.data),
-  alert("You successfully make a post")
-  
+  alert("You successfully made an audiophile post!"),
+    
   )
 }
 

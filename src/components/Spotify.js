@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { useNavigate } from 'react-router-dom'
 
-export default function Spotify({user}) {
+export default function Spotify(fetchUser={fetchUser}, user={user}) {
    const navigate = useNavigate(); 
 
    const CLIENT_ID = "30ca677f35a94ffab96ce89f7033806a"
@@ -51,7 +51,7 @@ export default function Spotify({user}) {
    })
    //4yvcSjfu4PC0CYQyLy4wSq
    console.log(data)
-   
+   console.log(fetchUser)
    setArtists(data.tracks.items)
  }
  
@@ -61,7 +61,7 @@ export default function Spotify({user}) {
            {artist.album.images.length ? <img className='album-img' src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
            <h3 className='song-title'> Title: {artist.name}</h3>
            <div className='form'>
-            <form key={user.userId} onSubmit={(e)=> {e.preventDefault(); handleSubmit()}}>
+            <form  onSubmit={(e)=> {e.preventDefault(); handleSubmit()}}>
               <input className='input-post' value={tracks.songTitle} onChange={handleSongTitle}/>
               <input className='input-post' value={tracks.artistName} onChange={handleArtist}/>
               <input className='input-post' value={tracks.albumName}  onChange={handleAlbum}/>
@@ -108,16 +108,18 @@ const getPosts = () => {
 }
 
 const handleSubmit = () => {
-  const tracks = {
-    userId: user.at(-1).userId + 1,
-    song_title: {songTitle} ,
-    album: {albumName},
-    artist: {artistName},
-    likes: 0
+  
+  const data = {
+    userId: 7 ,
+    song_title: tracks.songTitle ,
+    album: tracks.albumName,
+    artist: tracks.artistName
+    
   }
-  axios.post('http://localhost:5250/api/post', tracks).then((response) =>
+  axios.post('http://localhost:5250/api/post', data).then((response) =>
   console.log(response.data),
-  console.log(tracks)
+  alert("You successfully make a post")
+  
   )
 }
 
@@ -148,9 +150,9 @@ const handleSubmit = () => {
 
 
 
- console.log(tracks)
+//  console.log(tracks)
 
- 
+//  console.log(fetchUser)
 
 //  setSongTitle(dataAlbum.data.name)
 //  setAlbumName(dataAlbum.data.album.name)

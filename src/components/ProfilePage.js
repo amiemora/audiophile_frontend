@@ -1,9 +1,9 @@
 import React from 'react'
 import {Card, ListGroup} from 'react-bootstrap'
-export default function Profile({user, songTitle, albumName, artistName }) {
+export default function Profile({user }) {
 	
 	console.log(user)
-
+	
     return (
     <div className='profile-container'>
        <div className='prof-header'>
@@ -22,11 +22,14 @@ export default function Profile({user, songTitle, albumName, artistName }) {
 				</div>
 			</div>
 			</a>
+		
+			return (
 			<div className='text'>
-				<p className='h1-test post-text'>Title: &nbsp; {songTitle}</p>
-				<p className='h1-test post-text'>Artist: &nbsp; {artistName}</p>
-				<p className='h1-test post-text'>Album: &nbsp; {albumName}</p>
+				<p className='h1-test post-text'>Title: &nbsp; </p>
+				<p className='h1-test post-text'>Artist: &nbsp; </p>
+				<p className='h1-test post-text'>Album: &nbsp; </p>
 			</div>
+			
 		</div>
 
         <div className='card-feed'>

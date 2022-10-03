@@ -61,19 +61,25 @@ export default function Spotify({user}) {
            {artist.album.images.length ? <img className='album-img' src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
            <h3 className='song-title'> Title: {artist.name}</h3>
            <div className='form'>
-            <form onSubmit={(e)=> {e.preventDefault(); handleSubmit(songTitle, albumName, artistName)}}>
+            <form key={user.userId} onSubmit={(e)=> {e.preventDefault(); handleSubmit()}}>
               <input className='input-post' value={tracks.songTitle} onChange={handleSongTitle}/>
               <input className='input-post' value={tracks.artistName} onChange={handleArtist}/>
               <input className='input-post' value={tracks.albumName}  onChange={handleAlbum}/>
               <input className='post-btn' type='submit' value='Post' />
             </form>
         </div>
+        <div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; {tracks.songTitle}</p>
+				<p className='h1-test post-text'>Artist: &nbsp; {tracks.artistName}</p>
+				<p className='h1-test post-text'>Album: &nbsp; {tracks.albumName}</p>
+			</div>
        </div>
     
    ))
  }
  
  const [post, setPost] = ([])
+ 
  const [songTitle, setSongTitle] = ('')
  const [albumName, setAlbumName] = ('')
  const [artistName, setArtistName] = ('')
@@ -91,22 +97,30 @@ const handleArtist = (e) => {
   setArtistName(e.target.value)
 }
 
-const handleSubmit = (songTitle, albumName, artistName) => {
-  const data = {
-    song_title: songTitle,
-    album: albumName,
-    artist: artistName
-  }
-  axios.post('http://localhost:5250/api/post').then((response) =>
-  console.log(response.data)
+
+
+const getPosts = () => {
+
+  axios.get('http://localhost:5250/api/post').then((response)=> 
+    console.log(response)
+    
   )
 }
 
-const getPosts = () => {
-  axios.get('http://localhost:5250/api/post').then((response)=> 
-    console.log(response.data)
+const handleSubmit = () => {
+  const tracks = {
+    userId: user.at(-1).userId + 1,
+    song_title: {songTitle} ,
+    album: {albumName},
+    artist: {artistName},
+    likes: 0
+  }
+  axios.post('http://localhost:5250/api/post', tracks).then((response) =>
+  console.log(response.data),
+  console.log(tracks)
   )
 }
+
 
 
  const [tracks, setTracks] = useState({songTitle: '', albumName: '', artistName: ''});

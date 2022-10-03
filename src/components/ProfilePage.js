@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card, ListGroup} from 'react-bootstrap'
-export default function Profile({user, songTitle,albumName,artistName  }) {
+export default function Profile({user, songTitle, albumName, artistName }) {
 	
 	console.log(user)
 

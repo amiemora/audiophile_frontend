@@ -113,7 +113,7 @@ export default function Feed({setPost, setComment, setUser, setUsers, comments, 
 		<p className='h1-test' >Users:  &nbsp; </p>
 	{fetchUser.map((userItem)=> {
 			return (
-			<p className='h1-test'>{userItem.username} &nbsp; </p>
+			<p key={userItem.userId} className='h1-test'>{userItem.username} &nbsp; </p>
 		)
 	})}
 	</div>

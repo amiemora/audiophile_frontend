@@ -30,7 +30,7 @@ export default function Main({setPost, setComment, setUsers, comments, users, po
         getUsers()
     }, [])
 
- 
+    console.log(users)
 
     return (
         <Feed post={post} username={user} users={users} comments={comments} API={API} setComment={setComment} /> 

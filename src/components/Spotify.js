@@ -60,12 +60,12 @@ export default function Spotify() {
        <div className="after-search" key={artist.id} onClick={()=> handleOnClick(artist.href)}>
            {artist.album.images.length ? <img className='album-img' src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
            <h3 className='song-title'> Title: {artist.name}</h3>
-           <div>
+           <div className='form'>
             <form onSubmit={(e)=> {e.preventDefault(); handleSubmit(songTitle, albumName, artistName)}}>
-              <input value={tracks.selectedTrack} onChange={handleSongTitle} />
-              <input value={tracks.artist} onChange={handleArtist} />
-              <input value={tracks.listOfTracksFromAPI} onChange={handleAlbum} />
-              <input type='submit' value='Post' />
+              <input className='input-post' value={tracks.selectedTrack} onChange={handleSongTitle} />
+              <input className='input-post' value={tracks.artist} onChange={handleArtist} />
+              <input className='input-post' value={tracks.listOfTracksFromAPI} onChange={handleAlbum} />
+              <input className='post-btn' type='submit' value='Post' />
             </form>
         </div>
        </div>

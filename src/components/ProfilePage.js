@@ -8,7 +8,7 @@ export default function Profile({user, songTitle,albumName,artistName  }) {
     <div className='profile-container'>
        <div className='prof-header'>
             <img src="images/profile.jpg" alt="avatar" className="avatar"/>
-            <h2></h2>
+            <h2>{user.username}</h2>
        </div>
        <h4 className='post-h4'>Posts:</h4>
        <div className='prof-post'>
@@ -30,7 +30,7 @@ export default function Profile({user, songTitle,albumName,artistName  }) {
 		</div>
 
         <div className='card-feed'>
-			<h6 className='h1-test u-feed'>username</h6>
+			<h6 className='h1-test u-feed'>{user.username}</h6>
 			<a href='https://open.spotify.com/'>
 			<div className='play-icon'>
 				<div className='circle'>
@@ -46,7 +46,7 @@ export default function Profile({user, songTitle,albumName,artistName  }) {
 		</div>
 
         <div className='card-feed'>
-			<h6 className='h1-test u-feed'>username</h6>
+			<h6 className='h1-test u-feed'>{user.username}</h6>
 			<a href='https://open.spotify.com/'>
 			<div className='play-icon'>
 				<div className='circle'>

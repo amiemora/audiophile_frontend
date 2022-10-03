@@ -22,7 +22,7 @@ export default function Feed({setPost, setComment, setUser, setUsers, comments, 
 	console.log()
 
 	return (
-<div>
+<div className='bg-image'>
 	
 	
 	
@@ -42,7 +42,72 @@ export default function Feed({setPost, setComment, setUser, setUsers, comments, 
 				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
 			</div>
 		</div>
+
+		<div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
+
+		<div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
+
+		<div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
+		<div className='card-feed'>
+			<h6 className='h1-test u-feed'>username</h6>
+			<a href='https://open.spotify.com/'>
+			<div className='play-icon'>
+				<div className='circle'>
+					<div className='triangle'></div>
+				</div>
+			</div>
+			</a>
+			<div className='text'>
+				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
+				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
+				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			</div>
+		</div>
 	</div>
+
+	
 
 	<div className='users-map'>
 		<p className='h1-test' >Users:  &nbsp; </p>

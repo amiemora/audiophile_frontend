@@ -5,7 +5,7 @@ import Comment from './Comment'
 import {useEffect, useState} from 'react'
 import { data } from 'jquery'
 
-export default function Feed({ setPost ,  setComment, setUser, setUsers, comments, users, post, user}) {
+export default function Feed() {
 
 	const [fetchUser, setFetchUser] = useState([])
 	const [feedPost, setFeedPost] = useState([])

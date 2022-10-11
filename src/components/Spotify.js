@@ -146,26 +146,7 @@ const handleSubmit = () => {
 
 
 
-//  console.log(tracks)
 
-//  console.log(fetchUser)
-
-//  setSongTitle(dataAlbum.data.name)
-//  setAlbumName(dataAlbum.data.album.name)
-//  setArtistName(dataAlbum.data.artists[0].name)
-
-// const postSearch = async (id) => {
-  
-//   const {data} = await axios.get(`https://api.spotify.com/v1/search/track/${id}`, {
-//       headers: {
-//           Authorization: `Bearer ${token}`
-//       }
-//   })
-//   //4yvcSjfu4PC0CYQyLy4wSq
-//   console.log(data)
-  
-//   setPost(data.tracks.items)
-// }
  
 
     return (
@@ -193,11 +174,3 @@ const handleSubmit = () => {
 
 
 
-// const [selectedValue, setSelectedValue] = useState("")
-
-{/* <div>
-<select value={selectedValue} onChange={event => setSelectedValue(event.target.value)}>
-{data.data.map((item, idx) => <option key={idx} value={item.value}>{item.name}</option>)}
-</select>
-<h1>{selectedValue}</h1>
-</div> */}

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { useNavigate } from 'react-router-dom'
 
-export default function Spotify() {
+export default function Spotify(fetchUser={fetchUser}, user={user}) {
    const navigate = useNavigate(); 
 
    const CLIENT_ID = "30ca677f35a94ffab96ce89f7033806a"
@@ -27,7 +27,7 @@ export default function Spotify() {
      }
  
      setToken(token)
- 
+     getPosts()
  }, [])
  
  const logout = () => {
@@ -51,7 +51,7 @@ export default function Spotify() {
    })
    //4yvcSjfu4PC0CYQyLy4wSq
    console.log(data)
-   
+   console.log(fetchUser)
    setArtists(data.tracks.items)
  }
  
@@ -60,24 +60,27 @@ export default function Spotify() {
        <div className="after-search" key={artist.id} onClick={()=> handleOnClick(artist.href)}>
            {artist.album.images.length ? <img className='album-img' src={artist.album.images[0].url} alt=""/> : <div>No Image</div>}
            <h3 className='song-title'> Title: {artist.name}</h3>
-           <div>
-            <form onSubmit={(e)=> {e.preventDefault(); handleSubmit(songTitle, albumName, artistName)}}>
-              <input value={tracks.selectedTrack} onChange={handleSongTitle} />
-              <input value={tracks.artist} onChange={handleArtist} />
-              <input value={tracks.listOfTracksFromAPI} onChange={handleAlbum} />
-              <input type='submit' value='Post' />
+           <div className='form'>
+            <form  onSubmit={(e)=> {e.preventDefault(); handleSubmit()}}>
+              <input className='input-post' value={tracks.songTitle} onChange={handleSongTitle}/>
+              <input className='input-post' value={tracks.artistName} onChange={handleArtist}/>
+              <input className='input-post' value={tracks.albumName}  onChange={handleAlbum}/>
+              <input className='post-btn' type='submit' value='Post' />
             </form>
         </div>
+      
        </div>
     
    ))
  }
  
  const [post, setPost] = ([])
+ 
  const [songTitle, setSongTitle] = ('')
  const [albumName, setAlbumName] = ('')
  const [artistName, setArtistName] = ('')
- 
+//  onSubmit={(e)=> {e.preventDefault(); handleSubmit(songTitle, albumName, artistName)}}
+//onSubmit={(e)=> {e.preventDefault(); handleSubmit()}}
 const handleSongTitle = (e) => {
   setSongTitle(e.target.value)
 }
@@ -89,17 +92,36 @@ const handleAlbum = (e) => {
 const handleArtist = (e) => {
   setArtistName(e.target.value)
 }
-const handleSubmit = (songTitle, albumName, artistName) => {
- 
-  axios.post('http://localhost:3000/spotify',
-    songTitle,
-    albumName,
-    artistName
+
+
+
+const getPosts = () => {
+
+  axios.get('http://localhost:5250/api/post').then((response)=> 
+    console.log(response)
+    
+  )
+}
+
+const handleSubmit = () => {
+  
+  const data = {
+    userId: 7 ,
+    song_title: tracks.songTitle ,
+    album: tracks.albumName,
+    artist: tracks.artistName
+    
+  }
+  axios.post('http://localhost:5250/api/post', data).then((response) =>
+  console.log(response.data),
+  alert("You successfully made an audiophile post!"),
+    
   )
 }
 
 
- const [tracks, setTracks] = useState({selectedTrack: '', listOfTracksFromAPI: '', artist: ''});
+
+ const [tracks, setTracks] = useState({songTitle: '', albumName: '', artistName: ''});
 
  const handleOnClick = async (id) => {
    const dataAlbum = await axios.get(`${id}`, {
@@ -111,9 +133,9 @@ const handleSubmit = (songTitle, albumName, artistName) => {
    "album name:", dataAlbum.data.album.name, "  ",
    "artist name:",  dataAlbum.data.artists[0].name)
    setTracks({
-    selectedTrack: dataAlbum.data.name,
-    listOfTracksFromAPI: dataAlbum.data.album.name,
-    artist: dataAlbum.data.artists[0].name
+    songTitle: dataAlbum.data.name,
+    albumName: dataAlbum.data.album.name,
+    artistName: dataAlbum.data.artists[0].name
   })
   return (
     <div>
@@ -124,26 +146,7 @@ const handleSubmit = (songTitle, albumName, artistName) => {
 
 
 
- console.log(tracks)
 
- 
-
-//  setSongTitle(dataAlbum.data.name)
-//  setAlbumName(dataAlbum.data.album.name)
-//  setArtistName(dataAlbum.data.artists[0].name)
-
-// const postSearch = async (id) => {
-  
-//   const {data} = await axios.get(`https://api.spotify.com/v1/search/track/${id}`, {
-//       headers: {
-//           Authorization: `Bearer ${token}`
-//       }
-//   })
-//   //4yvcSjfu4PC0CYQyLy4wSq
-//   console.log(data)
-  
-//   setPost(data.tracks.items)
-// }
  
 
     return (
@@ -171,11 +174,3 @@ const handleSubmit = (songTitle, albumName, artistName) => {
 
 
 
-// const [selectedValue, setSelectedValue] = useState("")
-
-{/* <div>
-<select value={selectedValue} onChange={event => setSelectedValue(event.target.value)}>
-{data.data.map((item, idx) => <option key={idx} value={item.value}>{item.name}</option>)}
-</select>
-<h1>{selectedValue}</h1>
-</div> */}

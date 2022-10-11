@@ -5,30 +5,40 @@ import Comment from './Comment'
 import {useEffect, useState} from 'react'
 import { data } from 'jquery'
 
-export default function Feed({setPost, setComment, setUser, setUsers, comments, users, post, user}) {
+export default function Feed() {
 
 	const [fetchUser, setFetchUser] = useState([])
+	const [feedPost, setFeedPost] = useState([])
 
 	const getUsers = () => {
         axios.get(`http://localhost:5250/api/Users`).then((response) => setFetchUser(response.data))
 		
 	}
 
+	const getPostFeed = () => {
+		axios.get(`http://localhost:5250/api/post`).then((response)=>
+		
+		setFeedPost(response.data))
+	}
+	
     useEffect(() => {
         getUsers()
+		getPostFeed()
     }, [])
 
-	console.log(fetchUser)
-	console.log()
+	// console.log(fetchUser)
+	
 
 	return (
-<div>
+<div className='bg-image'>
 	
 	
 	
 	<div className='div-feed-container'>
-		<div className='card-feed'>
-			<h6 className='h1-test u-feed'>username</h6>
+	{feedPost.map((postItem)=> {
+			return (
+		<div key={feedPost.userId} className='card-feed'>
+			<h6 className='h1-test u-feed'>AUDIOPHILE<i className="fa-solid fa-record-vinyl audio"></i></h6>
 			<a href='https://open.spotify.com/'>
 			<div className='play-icon'>
 				<div className='circle'>
@@ -36,22 +46,16 @@ export default function Feed({setPost, setComment, setUser, setUsers, comments, 
 				</div>
 			</div>
 			</a>
-			<div className='text'>
-				<p className='h1-test post-text'>Title: &nbsp; Gooey</p>
-				<p className='h1-test post-text'>Artist: &nbsp; Glass Animals</p>
-				<p className='h1-test post-text'>Album: &nbsp; Zaba</p>
+			<div  className='text'>
+				<p className='h1-test post-text'>{postItem.song_title}</p>
+				<p className='h1-test post-text'>{postItem.artist}</p>
+				<p className='h1-test post-text'>{postItem.album}</p>
 			</div>
 		</div>
-	</div>
+			)
+		})}
 
-	<div className='users-map'>
-		<p className='h1-test' >Users:  &nbsp; </p>
-	{fetchUser.map((userItem)=> {
-			return (
-			<p className='h1-test'>{userItem.username} &nbsp; </p>
-		)
-	})}
-	</div>
+		</div>
 </div>
 	
 	)

@@ -110,6 +110,11 @@
   margin-left: 1em;
   
 }
+.nav-item:hover {
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+  -moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+}
 
 /* SPOTIFY */
 .sign-in-btn-search {
@@ -119,17 +124,40 @@
   padding: 7px;
   border-radius: 20px;
   color:black;
-  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
--moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 }
 .sign-in-btn-search:hover {
-  padding: 10px;
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+  -moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 }
 .logout-btn {
   width: 200px;
   padding: 6px;
   border-radius: 20px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-btn {
+  width: 100px;
+  margin-left: 3em;
+  margin-top: 1em;
+  padding: 7px;
+  border-radius: 20px;
+}
+.post-btn:hover {
+  -webkit-box-shadow:0px 0px 42px 5px rgba(245,46,255,0.84);
+  -moz-box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+  box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
+}
+.input-post {
+  padding: 8px;
+  border-radius: 99px;
+  margin-top: .2em;
+  display: block;
+  text-align: center;
 }
 .container-spotify {
   display: flex;
@@ -173,8 +201,12 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
   color: white;
   margin-bottom: 1em;
 }
-
-
+.meme {
+  width: 50%;
+}
+.meme-txt {
+  font-size: 1.5em;
+}
 
 /* FEED */
 .users-map {
@@ -185,12 +217,16 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+ 
+}
+.bg-image {
   background-image: url("https://wallpaper.dog/large/20351168.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .post-card {
   margin: 2em;
+  
 }
 .go-listen{
   margin-left: 1em;
@@ -225,12 +261,13 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 .card-feed {
   margin-right: 1.5em;
   background-color: #111;
-  margin-top: 3em;
+  margin-top: 2em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 13rem;
+  width: 210px;
+  height: 400;
   border-radius: 1em;
   padding: 1rem;
   align-items: center;
@@ -266,7 +303,7 @@ box-shadow: 0px 0px 42px 5px rgba(245,46,255,0.84);
 }
 .post-text {
   text-align: center;
-  margin-top: .8em;
+  margin-top: .5em;
   font-family: 'Saira', sans-serif;
   font-weight: bold;
 }

@@ -6,15 +6,15 @@ import axios from "axios";
 export default function Main({setPost, setComment, setUsers, comments, users, post, user, API}) {
 
 
-    const getUsers = () => {
-        axios.get(`http://localhost:5250/api/Users`).then((response) => console.log(response.data))
-    }
+    // const getUsers = () => {
+    //     axios.get(`http://localhost:5250/api/Users`).then((response) => console.log(response.data))
+    // }
 
-    useEffect(() => {
-        getUsers()
-    }, [])
+    // useEffect(() => {
+    //     getUsers()
+    // }, [])
 
-    console.log(users)
+    // console.log(users)
 
     return (
         <Feed setUsers={setUsers} post={post} username={user} user={user} users={users} comments={comments} API={API} setComment={setComment} /> 

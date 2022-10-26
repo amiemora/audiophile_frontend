@@ -9,7 +9,7 @@ export default function Spotify(fetchUser={fetchUser}, user={user}) {
    const navigate = useNavigate(); 
 
    const CLIENT_ID = "30ca677f35a94ffab96ce89f7033806a"
-   const REDIRECT_URI = "http://localhost:3000/spotify"
+   const REDIRECT_URI = "https://audiophilea.herokuapp.com/spotify"
    const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
    const RESPONSE_TYPE = "token"
  

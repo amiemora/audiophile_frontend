@@ -24,10 +24,12 @@ export default function SignIn({setUser, setPermission}) {
         setPassword(e.target.value)
     }
 
+    //`http://localhost:5250/api/Auth/login`
+
     const handleLogin = (username, name,  password) => {
 	
 		axios
-			.post(`http://localhost:5250/api/Auth/login`, {
+			.post(`https://wms-me.com/api/Auth/login`, {
 				Username: username,
                 Name: name,
 				Password: password

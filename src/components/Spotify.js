@@ -93,11 +93,12 @@ const handleArtist = (e) => {
   setArtistName(e.target.value)
 }
 
-
+// https://wms-me.com/api/
 
 const getPosts = () => {
 
-  axios.get('http://localhost:5250/api/post').then((response)=> 
+  // axios.get('http://localhost:5250/api/post').then((response)=> 
+  axios.get('https://wms-me.com/api/post').then((response)=> 
     console.log(response)
     
   )
@@ -112,7 +113,8 @@ const handleSubmit = () => {
     artist: tracks.artistName
     
   }
-  axios.post('http://localhost:5250/api/post', data).then((response) =>
+  // axios.post('http://localhost:5250/api/post', data).then((response) =>
+  axios.post('https://wms-me.com/api/post', data).then((response) =>
   console.log(response.data),
   alert("You successfully made an audiophile post!"),
     

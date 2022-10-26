@@ -23,6 +23,10 @@ export default function SignUp({setUsers, setPermission}) {
         setPassword(e.target.value)
     }
 
+    // https://wms-me.com/api/
+
+    // http://localhost:5250/api/
+
     const handleRegister = () => {
         
         console.log(name, username, password)
@@ -31,7 +35,7 @@ export default function SignUp({setUsers, setPermission}) {
             Name: name,
             Password: password,
         }
-        axios.post(`http://localhost:5250/api/Auth/register`, data).then((result)=> 
+        axios.post(`https://wms-me.com/api/Auth/register`, data).then((result)=> 
             {
                
                 alert("You have successfully registered. Login to access your account.")
@@ -40,18 +44,6 @@ export default function SignUp({setUsers, setPermission}) {
                 console.log(error)
             })
     }
-    // const handleRegister = (username, name, password) => {
-    //     axios.post(`http://localhost:5250/api/Auth/register`, {
-    //         Username: username,
-    //         Name: name,
-    //         Password: password,
-    //     })
-    //     .then((response) => {
-    //         setUsers(response.data)
-    //         console.log(response.data)
-    //         navigate('/login)')
-    //     })
-    // }
 
     return (
         <div className='register-div'>

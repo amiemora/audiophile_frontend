@@ -11,13 +11,13 @@ export default function Feed() {
 	const [feedPost, setFeedPost] = useState([])
 
 	const getUsers = () => {
-        axios.get(`http://localhost:5250/api/Users`).then((response) => setFetchUser(response.data))
-		
+       // axios.get(`http://localhost:5250/api/Users`).then((response) => setFetchUser(response.data))
+	   axios.get(`https://wms-me.com/api/Users`).then((response) => setFetchUser(response.data))
 	}
 
 	const getPostFeed = () => {
-		axios.get(`http://localhost:5250/api/post`).then((response)=>
-		
+		// axios.get(`http://localhost:5250/api/post`).then((response)=>
+		axios.get(`https://wms-me.com/api/post`).then((response)=>
 		setFeedPost(response.data))
 	}
 	
